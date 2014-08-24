@@ -15,41 +15,53 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module manages the chrony NTP client/server daemon. It is capable of
+trivial NTP client-only setups all the way up to stratum 1 servers connected
+to reference clocks.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+The chrony module configures chronyd to act as an NTP client, server, or both.
+It also can install or remove the chrony package, and enable or disable the
+chrony service.
 
 ## Setup
 
 ### What chrony affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* The chrony package
+* The chrony service
+* /etc/chrony/chrony.conf or /etc/chrony.conf
+* /var/lib/chrony
+* /var/log/chrony
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+On most systems, chrony has no special requirements.
+
+On Enterprise Linux 6 or older systems, the EPEL repository is required.
+I recommend using the [stahnma/epel](https://forge.puppetlabs.com/stahnma/epel) module as this is the official module
+from the EPEL package maintainer. EPEL is not required on Enterprise Linux 7.
 
 ### Beginning with chrony
 
 The very basic steps needed for a user to get the module up and running.
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+The minimum you need to begin using chrony as an NTP client to public NTP
+servers is something like:
+
+    class profile::ntp_client {
+        class { '::chrony': }
+    }
+
+The minimum you need to serve NTP to your local network is:
+
+    class profile::ntp_server {
+        class { '::chrony':
+            client_allow => '192.168.0.0/16',
+            serve_ntp    => true,
+        }
+    }
 
 ## Usage
 
@@ -65,15 +77,18 @@ with things. (We are working on automating this section!)
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+This module currently works only with Debian-based and Red Hat-based systems.
+It has been tested on:
+
+* Debian (7/wheezy)
+* Ubuntu (12.04, 14.04)
+* CentOS/RHEL (6, 7)
+* Fedora (19, 20)
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+This module is by no means complete. Pull requests are welcome for:
 
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+* Additional operating system support
+* Additional chrony feature support
+* Anything else that makes sense
