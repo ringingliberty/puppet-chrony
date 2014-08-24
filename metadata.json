@@ -1,17 +1,26 @@
 {
-  "name": "ringingliberty-chrony",
-  "version": "0.1.0",
-  "author": "ringingliberty",
-  "summary": "Manages the chrony network time daemon",
-  "license": "GPLv3+",
-  "source": "https://github.com/ringingliberty/puppet-chrony",
-  "project_page": "https://github.com/ringingliberty/puppet-chrony",
-  "issues_url": "https://github.com/ringingliberty/puppet-chrony/issues",
-  "dependencies": [
-    {
-      "name": "puppetlabs-stdlib",
-      "version_range": ">= 1.0.0"
-    }
-  ]
+      	"name": "ringingliberty-chrony",
+	"version": "0.1.0",
+	"author": "ringingliberty",
+	"summary": "Manages the chrony network time daemon",
+	"license": "GPLv3+",
+	"source": "https://github.com/ringingliberty/puppet-chrony",
+	"project_page": "https://github.com/ringingliberty/puppet-chrony",
+	"issues_url": "https://github.com/ringingliberty/puppet-chrony/issues",
+	"dependencies": [
+	{
+		"name": "puppetlabs/stdlib",
+		"version_range": ">= 1.0.0"
+	}
+	],
+	"requirements": [
+	{
+		"name": "pe",
+		"version_requirement": "3.2.x"
+	},
+	{
+		"name": "puppet",
+		"version_requirement": ">=3.4.0 <4.0.0"
+	}
+	]
 }
-
