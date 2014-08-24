@@ -100,6 +100,7 @@ class chrony (
   $rtconutc          = $chrony::params::rtconutc,
   $serve_ntp         = $chrony::params::serve_ntp,
   $servers           = $chrony::params::servers,
+  $service_hasstatus = $chrony::params::service_hasstatus,
   $service_enable    = $chrony::params::service_enable,
   $service_ensure    = $chrony::params::service_ensure,
   $service_manage    = $chrony::params::service_manage,

@@ -8,7 +8,7 @@ class chrony::service inherits chrony {
       ensure     => $service_ensure,
       enable     => $service_enable,
       name       => $service_name,
-      hasstatus  => true,
+      hasstatus  => $service_hasstatus,
       hasrestart => true,
       require    => Package[$package_name],
     }

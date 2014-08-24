@@ -47,6 +47,7 @@ class chrony::params {
           '3.debian.pool.ntp.org iburst',
         ]
       }
+      $service_hasstatus = false,
       $service_name = 'chrony'
     }
     'RedHat': {
@@ -61,6 +62,7 @@ class chrony::params {
         '2.centos.pool.ntp.org iburst',
         '3.centos.pool.ntp.org iburst',
       ]
+      $service_hasstatus = true,
       $service_name = 'chronyd'
       $stratumweight = 0
     }
