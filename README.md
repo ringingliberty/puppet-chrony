@@ -65,23 +65,95 @@ The minimum you need to serve NTP to your local network is:
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+This module provides a `chrony` class which accepts the following parameters.
 
-## Reference
+### General parameters
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+[*bindcmdaddress*]
+
+  Restrict the network interface to which chronyd will listen for command
+  packets (issued by chronyc).
+  Default: [ '127.0.0.1', '::1' ]
+
+[*rtconutc*]
+
+  Whether the computer's onboard real-time clock is set to UTC. Set to false
+  if the RTC is in local time, such as a system which boots multiple
+  operating systems.
+  Default: true
+
+[*sync_local_clock*]
+  Keep the computer's hardware clock in sync.
+  Default: true
+
+### NTP client parameters
+
+[*offline*]
+
+  Whether the NTP client should start in offline mode. In this mode, clients
+  must issue the chronyc online command to begin synchronization (though
+  most systems with a GUI will manage to do this automatically). Useful for
+  laptops and other intermittently connected devices.
+  Default: false
+
+[*servers*]
+
+  A list of NTP servers and options for those servers. (It is not necessary
+  to specify the offline option; this can be done with the offline
+  parameter.)
+  Default: Array of public NTP servers, depending on `$::osfamily`
+
+[*source_port*]
+
+  Select a fixed source port for outgoing NTP packets. By default, the
+  source port is dynamically assigned by the operating system.
+  Default: undef
+
+### NTP server parameters
+
+[*client_allow*]
+
+  Designate subnets from which NTP clients are allowed to access the
+  computer as an NTP server. IPv4 and IPv6 CIDR ranges can be specified.
+  Default: []
+
+[*client_deny*]
+
+  Designate subnets within previously allowed subnets which are denied
+  to access the NTP server. IPv4 and IPv6 CIDR ranges can be specified.
+  Default: []
+
+[*client_log*]
+
+  Whether to log statistics about NTP clients.
+  Default: false
+
+[*refclock*]
+
+  Specify one or more reference clocks to which chrony should obtain time
+  information to act as a stratum 1 server. See the chrony documentation
+  for details.
+  Default: []
+
+[*serve_ntp*]
+
+  Whether to enable the NTP server functionality. If disabled, chrony will
+  act only as an NTP client.
+  Default: false
+
+[*udlc*]
+
+  Allow the server to operate without synchronization to an external time
+  source (undisciplined local clock).
+  Default: false
 
 ## Limitations
 
 This module currently works only with Debian-based and Red Hat-based systems.
 It has been tested on:
 
-* Debian (7/wheezy)
-* Ubuntu (12.04, 14.04)
+* Debian (6/squeeze, 7/wheezy)
+* Ubuntu (10.04, 12.04, 14.04)
 * CentOS/RHEL (6, 7)
 * Fedora (19, 20)
 
