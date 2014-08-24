@@ -1,0 +1,17 @@
+{
+  "name": "error10-chrony",
+  "version": "0.1.0",
+  "author": "error10",
+  "summary": "Manages the chrony network time daemon",
+  "license": "GPLv3+",
+  "source": "https://github.com/error10/puppet-chrony",
+  "project_page": "https://github.com/error10/puppet-chrony",
+  "issues_url": "https://github.com/error10/puppet-chrony/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
+    }
+  ]
+}
+

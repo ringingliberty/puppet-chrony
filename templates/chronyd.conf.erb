@@ -1,0 +1,59 @@
+# File managed by Puppet
+
+<% [@servers].flatten.each do |server| -%>
+server <%= server %><% if @offline -%> offline<% end %>
+<% end -%>
+<% [@refclock].flatten.each do |refclock| -%>
+refclock <%= refclock %>
+<% end -%>
+
+<% if @source_port -%>
+acquisitionport <%= @source_port %>
+<% end -%>
+<% if !@serve_ntp -%>
+port 0
+<% end -%>
+
+stratumweight 0
+
+driftfile <%= @driftfile %>
+
+<% if @sync_local_clock %>
+rtcsync
+<% end %>
+
+makestep 10 3
+
+<% [@client_allow].flatten.each do |client_allow| -%>
+allow <%= client_allow %>
+<% end -%>
+
+<% [@client_deny].flatten.each do |client_deny| -%>
+deny <%= client_deny %>
+<% end -%>
+
+<% [@bindcmdaddress].flatten.each do |bindcmdaddress| -%>
+bindcmdaddress <%= bindcmdaddress %>
+<% end -%>
+
+<% if @udlc -%>
+local stratum 10
+<% end -%>
+
+keyfile <%= @keys_file %>
+
+commandkey 1
+
+generatecommandkey
+
+<% if !@client_log -%>
+noclientlog
+<% end -%>
+
+logchange 0.5
+
+logdir <%= @log_dir %>
+
+<% if @rtconutc -%>
+rtconutc
+<% end -%>
