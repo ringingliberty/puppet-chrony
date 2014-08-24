@@ -1,12 +1,12 @@
 {
-  "name": "error10-chrony",
+  "name": "ringingliberty-chrony",
   "version": "0.1.0",
-  "author": "error10",
+  "author": "ringingliberty",
   "summary": "Manages the chrony network time daemon",
   "license": "GPLv3+",
-  "source": "https://github.com/error10/puppet-chrony",
-  "project_page": "https://github.com/error10/puppet-chrony",
-  "issues_url": "https://github.com/error10/puppet-chrony/issues",
+  "source": "https://github.com/ringingliberty/puppet-chrony",
+  "project_page": "https://github.com/ringingliberty/puppet-chrony",
+  "issues_url": "https://github.com/ringingliberty/puppet-chrony/issues",
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
