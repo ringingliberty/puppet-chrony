@@ -14,7 +14,6 @@ class chrony::params {
   $service_ensure   = 'running'
   $service_manage   = true
   $source_port      = undef
-  $stratumweight    = 0
   $sync_local_clock = true
   $udlc             = false
 
@@ -63,6 +62,7 @@ class chrony::params {
         '3.centos.pool.ntp.org iburst',
       ]
       $service_name = 'chronyd'
+      $stratumweight = 0
     }
     default: {
       fail("The ${module_name} module is not supported on an ${::operatingsystem} distribution.")
