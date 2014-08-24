@@ -18,6 +18,22 @@ class chrony::params {
   $udlc             = false
 
   case $::osfamily {
+    'Archlinux': {
+      $config = '/etc/chrony.conf'
+      $driftfile = '/var/lib/chrony/drift'
+      $keys_file = '/etc/chrony.keys'
+      $log_dir = '/var/log/chrony'
+      $package_name = 'chrony'
+      $servers = [
+        '0.pool.ntp.org iburst',
+        '1.pool.ntp.org iburst',
+        '2.pool.ntp.org iburst',
+        '3.pool.ntp.org iburst',
+      ]
+      $service_hasstatus = true
+      $service_name = 'chrony'
+      $stratumweight = 0
+    }
     'Debian': {
       $config = '/etc/chrony/chrony.conf'
       $driftfile = '/var/lib/chrony/chrony.drift'
