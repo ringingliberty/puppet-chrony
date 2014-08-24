@@ -14,6 +14,7 @@ class chrony::params {
   $service_ensure   = 'running'
   $service_manage   = true
   $source_port      = undef
+  $stratumweight    = 0
   $sync_local_clock = true
   $udlc             = false
 
@@ -24,12 +25,29 @@ class chrony::params {
       $keys_file = '/etc/chrony/chrony.keys'
       $log_dir = '/var/log/chrony'
       $package_name = 'chrony'
-      $servers = [
-        '0.debian.pool.ntp.org iburst',
-        '1.debian.pool.ntp.org iburst',
-        '2.debian.pool.ntp.org iburst',
-        '3.debian.pool.ntp.org iburst',
-      ]
+      if
+        ($::operatingsystem == 'Ubuntu' and $::operatingsystemrelease < '12.04')
+        or
+        ($::operatingsystem == 'Debian' and $::operatingsystemrelease < '7')
+          {
+            # These old versions don't support stratumweight or iburst
+            $stratumweight = undef
+            $servers = [
+              '0.debian.pool.ntp.org',
+              '1.debian.pool.ntp.org',
+              '2.debian.pool.ntp.org',
+              '3.debian.pool.ntp.org',
+            ]
+          }
+      else {
+        $stratumweight = 0
+        $servers = [
+          '0.debian.pool.ntp.org iburst',
+          '1.debian.pool.ntp.org iburst',
+          '2.debian.pool.ntp.org iburst',
+          '3.debian.pool.ntp.org iburst',
+        ]
+      }
       $service_name = 'chrony'
     }
     'RedHat': {

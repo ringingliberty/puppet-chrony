@@ -105,6 +105,7 @@ class chrony (
   $service_manage    = $chrony::params::service_manage,
   $service_name      = $chrony::params::service_name,
   $source_port       = $chrony::params::source_port,
+  $stratumweight     = $chrony::params::stratumweight,
   $sync_local_clock  = $chrony::params::sync_local_clock,
   $udlc              = $chrony::params::udlc,
 ) inherits chrony::params {
