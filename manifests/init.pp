@@ -81,7 +81,7 @@
 #
 # === Copyright
 #
-# Copyright 2014 Your name here, unless otherwise noted.
+# Copyright 2014 Michael Hampton, unless otherwise noted.
 #
 class chrony (
   $bindcmdaddress    = $chrony::params::bindcmdaddress,
