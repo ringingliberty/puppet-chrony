@@ -29,11 +29,11 @@ chrony service.
 
 ### What chrony affects
 
-* The chrony package
-* The chrony service
-* /etc/chrony/chrony.conf or /etc/chrony.conf
-* /var/lib/chrony
-* /var/log/chrony
+* Installs and removes the chrony package
+* Starts and stops the chrony service
+* Manages /etc/chrony/chrony.conf or /etc/chrony.conf
+* Manages /var/lib/chrony
+* Manages /var/log/chrony
 
 ### Setup Requirements
 
@@ -161,6 +161,7 @@ It has been tested on:
 
 This module is by no means complete. Pull requests are welcome for:
 
+* Fixes for the bugs I left in
 * Additional operating system support
 * Additional chrony feature support
 * Anything else that makes sense
