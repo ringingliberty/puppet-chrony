@@ -53,6 +53,9 @@
 			]
 	},
 	{
+		"operatingsystem": "Gentoo"
+	},
+	{
 		"operatingsystem": "Debian",
 		"operatingsystemrelease": [
 			"6",

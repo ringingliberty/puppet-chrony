@@ -82,6 +82,22 @@ class chrony::params {
       $service_name = 'chronyd'
       $stratumweight = 0
     }
+    'Gentoo': {
+      $config = '/etc/chrony/chrony.conf'
+      $driftfile = '/var/lib/chrony/drift'
+      $keys_file = '/etc/chrony/chrony.keys'
+      $log_dir = '/var/log/chrony'
+      $package_name = 'chrony'
+      $servers = [
+        '0.gentoo.pool.ntp.org iburst',
+        '1.gentoo.pool.ntp.org iburst',
+        '2.gentoo.pool.ntp.org iburst',
+        '3.gentoo.pool.ntp.org iburst',
+      ]
+      $service_hasstatus = true
+      $service_name = 'chronyd'
+      $stratumweight = 0
+    }
     default: {
       fail("The ${module_name} module is not supported on an ${::operatingsystem} distribution.")
     }
