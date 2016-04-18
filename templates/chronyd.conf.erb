@@ -3,6 +3,9 @@
 <% [@servers].flatten.each do |server| -%>
 server <%= server %><% if @offline -%> offline<% end %>
 <% end -%>
+<% [@peers].flatten.each do |peer| -%>
+peer <%= peer %>
+<% end -%>
 <% [@refclock].flatten.each do |refclock| -%>
 refclock <%= refclock %>
 <% end -%>

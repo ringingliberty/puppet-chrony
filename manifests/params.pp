@@ -7,6 +7,7 @@ class chrony::params {
   $config_template  = 'chrony/chronyd.conf.erb'
   $offline          = false
   $package_ensure   = 'present'
+  $peers            = []
   $refclock         = []
   $rtconutc         = true
   $serve_ntp        = false

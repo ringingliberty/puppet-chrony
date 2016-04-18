@@ -96,6 +96,7 @@ class chrony (
   $offline           = $chrony::params::offline,
   $package_ensure    = $chrony::params::package_ensure,
   $package_name      = $chrony::params::package_name,
+  $peers             = $chrony::params::peers,
   $refclock          = $chrony::params::refclock,
   $rtconutc          = $chrony::params::rtconutc,
   $serve_ntp         = $chrony::params::serve_ntp,
