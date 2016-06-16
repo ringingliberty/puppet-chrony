@@ -137,6 +137,12 @@ This module provides a `chrony` class which accepts the following parameters.
 
   Default: `false`
 
+[*peers*]
+
+  A list of NTP peers (Servers running in the same Stratum and in the same admin domain)  and options for those peers.
+
+  Default: `[]`
+
 [*refclock*]
 
   Specify one or more reference clocks to which chrony should obtain time
