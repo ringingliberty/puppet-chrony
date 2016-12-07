@@ -1,5 +1,5 @@
 class chrony::params {
-
+  $bindaddress      = [ '127.0.0.1', '::1' ]
   $bindcmdaddress   = [ '127.0.0.1', '::1' ]
   $client_allow     = []
   $client_deny      = []

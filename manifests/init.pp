@@ -6,6 +6,11 @@
 #
 # Document parameters here.
 #
+# [*bindaddress*]
+#   Restrict the network interface to which chronyd will listen for NTP client
+#   requests.
+#   Default: [ '127.0.0.1', '::1' ]
+#
 # [*bindcmdaddress*]
 #   Restrict the network interface to which chronyd will listen for command
 #   packets (issued by chronyc).
@@ -84,6 +89,7 @@
 # Copyright 2014 Michael Hampton, unless otherwise noted.
 #
 class chrony (
+  $bindaddress       = $chrony::params::bindaddress,
   $bindcmdaddress    = $chrony::params::bindcmdaddress,
   $client_allow      = $chrony::params::client_allow,
   $client_deny       = $chrony::params::client_deny,
@@ -110,6 +116,7 @@ class chrony (
   $sync_local_clock  = $chrony::params::sync_local_clock,
   $udlc              = $chrony::params::udlc,
 ) inherits chrony::params {
+  validate_array($bindaddress)
   validate_array($bindcmdaddress)
   validate_array($client_allow)
   validate_array($client_deny)
