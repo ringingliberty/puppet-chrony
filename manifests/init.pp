@@ -12,6 +12,11 @@
 # [*package_ensure*]
 #   Set to 'installed' or 'latest'
 #
+# [*bindaddress*]
+#   Restrict the network interface to which chronyd will listen for NTP client
+#   requests.
+#   Default: [ '127.0.0.1', '::1' ]
+#
 # [*bindcmdaddress*]
 #   Restrict the network interface to which chronyd will listen for command
 #   packets (issued by chronyc).
@@ -136,6 +141,7 @@
 class chrony (
   Array[String] $packages                   = ['chrony'],
   String $package_ensure                    = 'installed',
+  Array[String] $bindaddress                = [ '127.0.0.1', '::1' ],
   Array[String] $bindcmdaddress             = [ '127.0.0.1', '::1' ],
   Array[String] $client_allow               = [],
   Array[String] $client_deny                = [],
