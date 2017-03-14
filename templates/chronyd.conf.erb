@@ -1,7 +1,7 @@
 # File managed by Puppet
 
 <% [@servers].flatten.each do |server| -%>
-server <%= server %><% if @offline -%> offline<% end %>
+server <%= server %><% if @iburst -%> iburst<% end -%><% if @offline -%> offline<% end %>
 <% end -%>
 <% [@refclock].flatten.each do |refclock| -%>
 refclock <%= refclock %>
