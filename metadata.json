@@ -5,9 +5,8 @@
   "summary": "Installs and configures the chrony service.",
   "license": "GPLv3+",
   "source": "https://github.com/blackknight36/puppet-chrony.git",
-  "project_page": null,
-  "issues_url": null,
-  "dependencies": [],
+  "project_page": "https://github.com/blackknight36/puppet-chrony",
+  "issues_url": "",
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
