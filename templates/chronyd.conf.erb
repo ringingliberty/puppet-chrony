@@ -1,7 +1,7 @@
 # File managed by Puppet
 
 <% [@servers].flatten.each do |server| -%>
-server <%= server %><% if @offline -%> offline<% end %>
+server <%= server %><% if @iburst -%> iburst<% end -%><% if @offline -%> offline<% end %>
 <% end -%>
 <% [@refclock].flatten.each do |refclock| -%>
 refclock <%= refclock %>
@@ -44,9 +44,11 @@ local stratum 10
 
 keyfile <%= @keys_file %>
 
+<% if Gem::Version.new(@chrony_version) < Gem::Version.new('2.2') -%>
 commandkey 1
 
 generatecommandkey
+<% end -%>
 
 <% if !@client_log -%>
 noclientlog
