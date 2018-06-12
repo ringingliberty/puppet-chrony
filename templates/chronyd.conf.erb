@@ -46,7 +46,6 @@ keyfile <%= @keys_file %>
 
 <% if Gem::Version.new(@chrony_version) < Gem::Version.new('2.2') -%>
 commandkey 1
-
 generatecommandkey
 <% end -%>
 

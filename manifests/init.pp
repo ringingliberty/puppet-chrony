@@ -159,10 +159,18 @@ class chrony (
     ensure => $package_ensure,
   }
 
-  file { $config_file:
-    content => template($config_template),
-    require => Package[$packages],
-  } ~>
+  file {
+    '/run/chrony-helper':
+        ensure  => directory,
+        seltype => 'chronyd_var_run_t',
+    ;
+
+    $config_file:
+        content => template($config_template),
+        require => Package[$packages],
+        notify  => Service[$services],
+    ;
+  }
 
   service { $services:
     ensure => $service_ensure,
