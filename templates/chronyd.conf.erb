@@ -37,6 +37,9 @@ deny <%= client_deny %>
 <% [@bindcmdaddress].flatten.each do |bindcmdaddress| -%>
 bindcmdaddress <%= bindcmdaddress %>
 <% end -%>
+<% if @cmdport -%>
+cmdport <%= @cmdport %>
+<% end -%>
 
 <% if @udlc -%>
 local stratum 10
