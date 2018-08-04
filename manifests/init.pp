@@ -31,6 +31,13 @@
 #   Whether to log statistics about NTP clients.
 #   Default: false
 #
+# [*cmdport*]
+#   The port that chronyd will listen for control packets. Set to 0 to
+#   disable listening for control packets. This does not affect listening
+#   for control packets on a Unix socket. By default (and when unspecified)
+#   chronyd uses udp/323.
+#   Default: undef
+#
 # [*offline*]
 #   Whether the NTP client should start in offline mode. In this mode, clients
 #   must issue the chronyc online command to begin synchronization (though
@@ -133,6 +140,7 @@ class chrony (
   Array[String] $client_allow               = [],
   Array[String] $client_deny                = [],
   Boolean $client_log                       = false,
+  Optional[Integer] $cmdport                = undef,
   Boolean $offline                          = false,
   Array[String] $refclock                   = [],
   String $config_file                       = '/etc/chrony.conf',
