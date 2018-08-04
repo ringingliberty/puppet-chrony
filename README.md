@@ -161,20 +161,19 @@ This module provides a `chrony` class which accepts the following parameters.
 
 ## Limitations
 
-This module currently works only with Debian-based and Red Hat-based systems,
-and Arch Linux. It has been tested on:
+This module currently only works with Debian, Redhat, and Arch Linux based systems.  Testing has been done on the following platforms.
 
 * Debian (6/squeeze, 7/wheezy)
 * Ubuntu (10.04, 12.04, 14.04)
 * CentOS/RHEL (6, 7)
-* Fedora (19, 20)
+* Fedora (19-29)
 * Arch Linux (3.16.1)
 
 ## Development
 
 This module is by no means complete. Pull requests are welcome for:
 
-* Fixes for the bugs I left in
+* Bug fixes
 * Additional operating system support
 * Additional chrony feature support
 * Anything else that makes sense
