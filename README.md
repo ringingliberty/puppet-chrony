@@ -161,13 +161,14 @@ This module provides a `chrony` class which accepts the following parameters.
 
 ## Limitations
 
-This module currently only works with Debian, Redhat, and Arch Linux based systems.  Testing has been done on the following platforms.
+This module currently only works with Debian, Redhat, Arch Linux, and Gentoo based systems.  Testing has been done on the following platforms.
 
 * Debian (6/squeeze, 7/wheezy)
 * Ubuntu (10.04, 12.04, 14.04)
 * CentOS/RHEL (6, 7)
 * Fedora (19-29)
 * Arch Linux (3.16.1)
+* Gentoo (Base System 2.2)
 
 ## Development
 
