@@ -1,9 +1,8 @@
 Facter.add('chrony_version') do
     confine :kernel => 'Linux'
     setcode do
-        version = Facter::Core::Execution.exec("/bin/rpm -q --queryformat '%{VERSION}' chrony")
-        if version != nil
-            version
+        if Facter::Core::Execution.which("chronyd")
+            Facter::Core::Execution.execute("/bin/rpm -q --queryformat '%{VERSION}' chrony")
         else
             nil
         end
