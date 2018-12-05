@@ -163,7 +163,7 @@ This module provides a `chrony` class which accepts the following parameters.
 
 This module currently only works with Debian, Redhat, Arch Linux, and Gentoo based systems.  Testing has been done on the following platforms.
 
-* Debian (6/squeeze, 7/wheezy)
+* Debian (8/jessie, 9/stretch)
 * Ubuntu (10.04, 12.04, 14.04)
 * CentOS/RHEL (6, 7)
 * Fedora (19-29)
