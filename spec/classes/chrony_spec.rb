@@ -40,14 +40,6 @@ describe 'chrony' do
       end
 
       it do
-        is_expected.to contain_file('/run/chrony-helper')
-            .with({
-              :ensure  => 'directory',
-              :seltype => 'chronyd_var_run_t',
-            })
-      end
-
-      it do
         is_expected.to contain_file('/etc/chrony.conf')
             .that_requires('Package[chrony]')
       end

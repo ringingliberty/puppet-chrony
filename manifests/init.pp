@@ -167,14 +167,6 @@ class chrony (
     ensure => $package_ensure,
   }
 
-  # The chrony service will not start properly if this directory does not exist
-  if $facts['osfamily'] == 'RedHat' {
-    file { '/run/chrony-helper':
-      ensure  => directory,
-      seltype => 'chronyd_var_run_t',
-    }
-  }
-
   file { $config_file:
     content => template($config_template),
     require => Package[$packages],
