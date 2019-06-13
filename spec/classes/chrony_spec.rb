@@ -16,6 +16,10 @@ describe 'chrony' do
     :hardwaremodels => 'x86_64',
     :supported_os   => [
       {
+        'operatingsystem'        => 'RedHat',
+        'operatingsystemrelease' => ['7', '8'],
+      },
+      {
         'operatingsystem'        => 'CentOS',
         'operatingsystemrelease' => ['7'],
       },
