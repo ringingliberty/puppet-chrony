@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'shared_contexts'
 
 describe 'chrony' do
 
@@ -20,8 +19,30 @@ describe 'chrony' do
         'operatingsystem'        => 'CentOS',
         'operatingsystemrelease' => ['7'],
       },
+      {
+        'operatingsystem'        => 'Fedora',
+      },
     ],
   }
+
+  on_supported_os(redhat).each do |os, facts|
+    let(:facts) {
+      facts
+    }
+
+    context "custom bindaddress" do
+      let(:params) {{
+        :packages => ['chrony'],
+        :bindaddress => ['127.0.0.1', '::1', '192.168.0.1'],
+      }}
+
+      it do
+        is_expected.to contain_file('/etc/chrony.conf')
+            .that_requires('Package[chrony]')
+            .that_notifies('Service[chronyd]')
+      end
+    end
+  end
 
   on_supported_os(redhat).each do |os, facts|
     context "on #{os}" do
@@ -42,6 +63,7 @@ describe 'chrony' do
       it do
         is_expected.to contain_file('/etc/chrony.conf')
             .that_requires('Package[chrony]')
+            .that_notifies('Service[chronyd]')
       end
 
       it do
