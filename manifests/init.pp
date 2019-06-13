@@ -174,9 +174,10 @@ class chrony (
   }
 
   file { $config_file:
-    content => template($config_template),
-    require => Package[$packages],
-    notify  => Service[$services],
+    content   => template($config_template),
+    show_diff => false,
+    require   => Package[$packages],
+    notify    => Service[$services],
   }
 
   service { $services:

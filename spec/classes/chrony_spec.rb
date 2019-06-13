@@ -30,7 +30,7 @@ describe 'chrony' do
       facts
     }
 
-    context "custom bindaddress" do
+    context "custom bindaddress on #{os}" do
       let(:params) {{
         :packages => ['chrony'],
         :bindaddress => ['127.0.0.1', '::1', '192.168.0.1'],
@@ -38,6 +38,9 @@ describe 'chrony' do
 
       it do
         is_expected.to contain_file('/etc/chrony.conf')
+            .with({
+              :show_diff => false,
+            })
             .that_requires('Package[chrony]')
             .that_notifies('Service[chronyd]')
       end
