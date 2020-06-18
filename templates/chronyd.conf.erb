@@ -26,6 +26,10 @@ rtcsync
 
 makestep 10 3
 
+<% [@bindaddress].flatten.each do |bindaddress| -%>
+bindaddress <%= bindaddress %>
+<% end -%>
+
 <% [@client_allow].flatten.each do |client_allow| -%>
 allow <%= client_allow %>
 <% end -%>

@@ -12,6 +12,11 @@
 # [*package_ensure*]
 #   Set to 'installed' or 'latest'
 #
+# [*bindaddress*]
+#   Restrict the network interface to which chronyd will listen for NTP client
+#   requests.
+#   Default: [ '127.0.0.1', '::1' ]
+#
 # [*bindcmdaddress*]
 #   Restrict the network interface to which chronyd will listen for command
 #   packets (issued by chronyc).
@@ -136,6 +141,7 @@
 class chrony (
   Array[String] $packages                   = ['chrony'],
   String $package_ensure                    = 'installed',
+  Array[String] $bindaddress                = [ '127.0.0.1', '::1' ],
   Array[String] $bindcmdaddress             = [ '127.0.0.1', '::1' ],
   Array[String] $client_allow               = [],
   Array[String] $client_deny                = [],
@@ -167,18 +173,11 @@ class chrony (
     ensure => $package_ensure,
   }
 
-  # The chrony service will not start properly if this directory does not exist
-  if $facts['osfamily'] == 'RedHat' {
-    file { '/run/chrony-helper':
-      ensure  => directory,
-      seltype => 'chronyd_var_run_t',
-    }
-  }
-
   file { $config_file:
-    content => template($config_template),
-    require => Package[$packages],
-    notify  => Service[$services],
+    content   => template($config_template),
+    show_diff => false,
+    require   => Package[$packages],
+    notify    => Service[$services],
   }
 
   service { $services:
