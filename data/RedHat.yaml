@@ -1,8 +1,8 @@
 ---
-chrony::config:     '/etc/chrony.conf'
-chrony::driftfile:  '/var/lib/chrony/drift'
-chrony::keys_file:  '/etc/chrony.keys'
-chrony::log_dir:    '/var/log/chrony'
+chrony::config_file: '/etc/chrony.conf'
+chrony::driftfile:   '/var/lib/chrony/drift'
+chrony::keys_file:   '/etc/chrony.keys'
+chrony::log_dir:     '/var/log/chrony'
 
 chrony::packages:
     - 'chrony'
