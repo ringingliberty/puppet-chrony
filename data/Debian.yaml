@@ -1,0 +1,21 @@
+---
+chrony::config_file: '/etc/chrony/chrony.conf'
+chrony::driftfile:   '/var/lib/chrony/chrony.drift'
+chrony::keys_file:   '/etc/chrony/chrony.keys'
+chrony::log_dir:     '/var/log/chrony'
+
+chrony::packages:
+    - chrony
+
+chrony::stratumweight:  0
+
+chrony::servers:
+    - '0.debian.pool.ntp.org'
+    - '1.debian.pool.ntp.org'
+    - '2.debian.pool.ntp.org'
+    - '3.debian.pool.ntp.org'
+
+chrony::services:
+    - 'chrony'
+
+chrony::service_hasstatus:  false
