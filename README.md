@@ -166,7 +166,7 @@ and Arch Linux. It has been tested on:
 
 * Debian (6/squeeze, 7/wheezy)
 * Ubuntu (10.04, 12.04, 14.04)
-* CentOS/RHEL (6, 7)
+* CentOS/RHEL (6, 7, 8)
 * Fedora (19, 20)
 * Arch Linux (3.16.1)
 
